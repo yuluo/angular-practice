@@ -1,0 +1,60 @@
+form {
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+.expiry{
+  width: 20%;
+  display: inline-block;
+}
+
+.cvc {
+  width: 40%;
+}
+
+.info p {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+input[name="cardExpMonth"], input[name="cardExpYear"] {
+  width: 45%;
+}
+
+input[name="cardExpMonth"]{
+  display: inline;
+}
+
+input[name="cardExpYear"]{
+  display: inline-block;
+}
+.help-block {
+  color:#cc0000
+}
+
+.input-error {
+  border-color: #cc0000;
+}
+
+.input-success {
+  border-color: #4bb543;
+}
+
+.message {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+}
+
+.button {
+  color: #fff;
+  background: #007bff;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}

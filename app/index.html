@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="paymentApp">
+  <head>
+    <meta charset="utf-8">
+    <base href="/">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <title>Payment Validation</title>
+  </head>
+  <body>
+    <div ng-controller="FormController as frmCtrl">
+      <!-- Enter Title here -->
+      <h1 class="title">Payment Validation</h1>
+      <br />
+      <!-- Use angular.js directives in the form below to obtain the necessary functioning -->
+      <form novalidate name="paymentForm">
+        <div class="form-group" >
+          <label for="cardNum">Card Number</label>
+          <input ng-model="cardDetails.cardNumber"
+                 ng-class="{ 'input-error': buttonClicked && !cardNumberValid, 'input-success': buttonClicked && cardNumberValid }"
+                 type="text" name="cardNum"
+                 class="form-control" id="card-num" required placeholder="Enter the Card Number">
+          <p class="help-block" ng-show="buttonClicked && !cardNumberValid">Invalid Card Number.</p>
+        </div>
+        <div class="form-group">
+          <label for="cardName">Name on Card</label>
+          <input ng-model="cardDetails.nameOnCard"
+                 ng-class="{ 'input-error': buttonClicked && !nameValid, 'input-success': buttonClicked && nameValid }"
+                 type="text" name="cardName"
+                 class="form-control" id="full-name" required placeholder="Enter the name on the card in all caps">
+          <p class="help-block" ng-show="buttonClicked && !nameValid">Invalid Name.</p>
+        </div>
+        <div class="row" >
+          <div class="form-group expiry col-md-6">
+            <label for="cardExp">Expiration</label>
+            <br />
+            <input ng-model="cardDetails.expiryMonth"
+                   ng-class="{ 'input-error': buttonClicked && !expireValid, 'input-success': buttonClicked && expireValid }"
+                   type="text" name="cardExpMonth"
+                   class="form-control" id="expiry-date-month" required placeholder="mm">
+            <input ng-model="cardDetails.expiryYear" 
+                   ng-class="{ 'input-error': buttonClicked && !expireValid, 'input-success': buttonClicked && expireValid }"
+                   type="text" name="cardExpYear"
+                   class="form-control" id="expiry-date-year" required placeholder="yy">
+            <p class="help-block" ng-show="buttonClicked && !expireValid">Invalid Expiration Date.</p>
+          </div>
+          <div class="form-group cvc col-md-6">
+            <label for="cardCVV">CVV/CVC</label>
+            <input ng-model="cardDetails.cvc"
+                   ng-class="{ 'input-error': buttonClicked && !cvcValid, 'input-success': buttonClicked && cvcValid }"
+                   type="text" name="cardCVV"
+                   class="form-control" id="cvc" placeholder="CVV/CVC Number">
+            <p class="help-block" ng-show="buttonClicked && !cvcValid">Invalid CVV Number.</p>
+          </div>
+        </div>
+        <button class="button" ng-click="buttonClick()">Verify</button>
+      </form>
+      <br/><br/>
+      <!-- Render the message here -->
+
+      <h2 class="message" ng-show="buttonClicked">{{message}}</h2>
+    </div>
+      <script src="app.js"></script>
+  </body>
+</html>
